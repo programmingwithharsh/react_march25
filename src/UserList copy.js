@@ -1,5 +1,4 @@
 import React from 'react';
-import User from './User';
 
 class UserList extends React.Component {
     constructor() {
@@ -37,7 +36,11 @@ class UserList extends React.Component {
                 <tbody>
 
                     {this.state.users.map((user, index) => (
-                        <User key={index} user={user} />
+                        <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td><a href='#'>Edit</a>|<a href='#'>Delete</a></td>
+                        </tr>
                     ))}
 
                 </tbody>

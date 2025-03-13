@@ -6,6 +6,7 @@ import Title from './Title';
 import Star from './Star';
 import Login from './Login';
 import UserList from './UserList';
+import './Style.css'; // import CSS File
 
 export default class Main extends React.Component { // exporting component
     constructor(props) {
@@ -36,14 +37,20 @@ export default class Main extends React.Component { // exporting component
         console.log('Render 2');
         console.log(this.state);
         console.log("Main Component Props Is ", this.props); // Props mobile, user, hobbies and birthDetail
+
+        let myStyle = {
+            color: 'white',
+            backgroundColor: 'red'
+        }
         return <div>
             This is Main Class Component
 
             <hr />
-            <h1>Props in Main component is {this.props.mobile}</h1>
-            <h1>Props in Main component is {this.props.user}</h1>
-            <h1>Props in Main component is {this.props.hobbies[0]}</h1>
-            <h1>Props in Main component is {this.props.birthDetail.place}</h1>
+            <h1 style={{ color: 'yellow', backgroundColor: 'blue' }}>Props in Main component is {this.props.mobile} - Using Inline CSS</h1>
+            <h1 style={myStyle}>Props in Main component is {this.props.user} - Using Internal CSS</h1>
+            <h1 style={myStyle}>Props in Main component is {this.props.hobbies[0]} - Using Internal CSS</h1>
+            <h1 className='header'>Props in Main component is {this.props.birthDetail.place} - Using External CSS Here</h1>
+            <h2 className="main">Programming with Harsh - Using External CSS Here</h2>
             <hr />
 
             <h1>State is having username is {this.state.username}</h1>
@@ -57,7 +64,7 @@ export default class Main extends React.Component { // exporting component
 
             <Login mobile="Samsung" />
             <Title title="This is title props" />
-            
+
             <Star mobile="Samsung" />
             <Star mobile="Iphone" />
             <Star mobile="MI" />

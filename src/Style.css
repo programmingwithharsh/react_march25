@@ -1,0 +1,12 @@
+.header {
+  background-color: brown;
+  color: aquamarine;
+  border: 2px solid gold;
+  margin: 10px;
+  padding: 10px;
+}
+
+.main {
+  background-color: orange;
+  border: 2px solid red;
+}
