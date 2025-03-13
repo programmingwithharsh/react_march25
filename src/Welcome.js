@@ -2,6 +2,11 @@ import React from 'react';
 
 class Welcome extends React.Component {
 
+    constructor(props){
+        super(props);
+        console.log("Welcome Component Props is ", this.props);
+    }
+
     render() { // render lifecycle
         return (<div>
             <h1>Welcome to Users Module</h1>

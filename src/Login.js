@@ -1,4 +1,5 @@
-function Login() {
+function Login(props) {
+    // 
     return (<div>
         <form action="./LoginSuccess.html" method="get">
             Email <input type="text" name="email" id="email" /><br />
