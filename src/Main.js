@@ -10,16 +10,31 @@ export default class Main extends React.Component { // exporting component
     constructor() {
         super();
         console.log('Constructor 1');
+        this.state = {
+            username: "Debasis"
+        }
     }
 
     componentDidMount() { // call after render, this is the best place where we can call API
         console.log('ComponentDidMount 3');
     }
 
+    updateUsername = () => {
+        this.setState({ // updating state, whenever state updates component rerender
+            username: "Ganesh"
+        })
+    }
+
     render() { // render lifecycle
         console.log('Render 2');
         return <div>
             This is Main Class Component
+
+            <hr />
+            <h1>State is having username is {this.state.username}</h1>
+            <button onClick={this.updateUsername}>Update Username</button>
+            <hr />
+
             <Login />
             <Title />
             <Star />
