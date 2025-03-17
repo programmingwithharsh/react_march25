@@ -7,6 +7,7 @@ import Star from './Star';
 import Login from './Login';
 import UserList from './UserList';
 import './Style.css'; // import CSS File
+import Nav from './Nav';
 
 export default class Main extends React.Component { // exporting component
     constructor(props) {
@@ -43,8 +44,8 @@ export default class Main extends React.Component { // exporting component
             backgroundColor: 'red'
         }
         return <div>
-            This is Main Class Component
 
+            <Nav />
             <hr />
             <h1 style={{ color: 'yellow', backgroundColor: 'blue' }}>Props in Main component is {this.props.mobile} - Using Inline CSS</h1>
             <h1 style={myStyle}>Props in Main component is {this.props.user} - Using Internal CSS</h1>
@@ -54,9 +55,10 @@ export default class Main extends React.Component { // exporting component
             <hr />
 
             <h1>State is having username is {this.state.username}</h1>
-            <button onClick={this.updateUsername}>Update Username</button>
-            <button onClick={this.somethingElse}>Other Button</button>
+            <button className='btn btn-primary m-2' style={{ backgroundColor: 'aqua', color: 'black' }} onClick={this.updateUsername}>Update Username</button>
+            <button className='btn btn-secondary m-2 btn-primary-cutom' onClick={this.somethingElse}>Other Button</button>
             <hr />
+
 
             <UserList />
 
