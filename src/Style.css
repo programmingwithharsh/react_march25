@@ -16,6 +16,11 @@
   color: black !important;
 }
 
-.nav-link, .navbar-brand {
+.nav-link,
+.navbar-brand {
   color: white !important;
+}
+
+.modal-footer {
+  border-top: none !important;
 }
