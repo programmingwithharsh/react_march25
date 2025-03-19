@@ -22,7 +22,7 @@ const UseEffectHookExample = () => {
             )
     }, []); // effect will run once 
 
-    return (<div className="m-4">
+    return (<div>
         <h1>List of users using useState and useEffect Hook and fetch method</h1>
         <ul>
             {data.map((user, index) => (

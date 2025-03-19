@@ -9,7 +9,7 @@ export default function Product(props) {
             <td>{props.product.releaseDate}</td>
             <td>{props.product.description}</td>
             <td>{props.product.price}</td>
-            <td>{props.product.starRating} <Star /></td>
+            <td><Star rating={props.product.starRating} /></td>
         </tr>
     </>
 }

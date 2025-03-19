@@ -11,7 +11,7 @@ const UseStateHookExample = () => {
         }]);
     }, []); // effect will run once 
 
-    return (<div className="m-4">
+    return (<div>
         <h1>Display User name using useState and useEffect Hook</h1>
         <ul>
             {data.map((user, index) => (
