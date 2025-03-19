@@ -20,6 +20,7 @@ class AddProduct extends React.Component {
         const rating = event.target.elements.rating.value;
 
         const product = { // create new object 
+            "id": Number(new Date()),
             "productName": productName,
             "productCode": productCode,
             "releaseDate": releaseDate,
