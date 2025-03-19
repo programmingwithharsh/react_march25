@@ -1,6 +1,14 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 class AddProduct extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            redirect: false
+        }
+    }
 
     handleSubmit = (event) => {
         event.preventDefault(); // stop page refresh
@@ -22,14 +30,37 @@ class AddProduct extends React.Component {
 
         if (productName === "") {
             alert("Please enter product name");
+        } else {
+            this.setState({ // whenever state udpate, component rerender
+                redirect: true
+            })
         }
 
-        // here you can write a logic to add product in local storage
-        console.log(product);
+        let products = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+        products.push(product);
+
+        localStorage.setItem("products", JSON.stringify(products)); // set item in local storage
     }
 
     render() {
+        const { redirect } = this.state; // Object Destructuring
+        console.log(redirect);
+        /*
+
+        if (redirect) {
+            return <div className='m-4 col-xxl-6'></div>
+        } else {
+            return <div className='m-4 col-xxl-6'>something else</div> 
+        }
+
+        */
+
         return <div className='m-4 col-xxl-6'>
+            {
+                redirect && (
+                    <Navigate to="/products" />
+                )
+            }
             <form onSubmit={this.handleSubmit}>
 
                 Product Name <input className='form-control' type='text' placeholder='Enter Product name' name="productName" />

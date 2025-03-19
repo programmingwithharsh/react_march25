@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CoreBootstrap from './CoreBootstrap/CoreBootstrap';
 import Register from './Register';
 import PageNotFound from './PageNotFound';
+import ProductDetail from './ProductDetail';
 
 export default class Main extends React.Component { // exporting component
     constructor(props) {
@@ -98,6 +99,7 @@ export default class Main extends React.Component { // exporting component
                     <Route path="/title" element={<Title title="This is title props" />} />
                     <Route path="/addproduct" element={<AddProduct {...this.props} />} />
                     <Route path="/products" element={<ProductList products={this.state.products} mobile="iPhone" />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/users" element={<UserList />} />
                     <Route path="/bs" element={<CoreBootstrap />} />
                     <Route path="*" element={<PageNotFound />} />
