@@ -13,6 +13,7 @@ import Register from './Register';
 import PageNotFound from './PageNotFound';
 import ProductDetail from './ProductDetail';
 import HooksExample from './Hooks/HooksExample';
+import ReactBoostrap from './ReactBootstrap/ReactBootstrap';
 
 export default class Main extends React.Component { // exporting component
     constructor(props) {
@@ -103,6 +104,7 @@ export default class Main extends React.Component { // exporting component
                     <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/users" element={<UserList />} />
                     <Route path="/bs" element={<CoreBootstrap />} />
+                    <Route path="/bs2" element={<ReactBoostrap />} />
                     <Route path="/hooks" element={<HooksExample />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Route>
