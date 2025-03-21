@@ -6,7 +6,7 @@ const ProductReducer = function (state = products, action) {
             return [...state]; // write a logic to remove product here
 
         case 'ADD_PRODUCT':
-            return [...state, action.product];
+            return [...state, action.product]; // ES6
 
         case 'LOAD_PRODUCTS':
             return [...state];

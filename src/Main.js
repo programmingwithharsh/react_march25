@@ -14,6 +14,7 @@ import PageNotFound from './PageNotFound';
 import ProductDetail from './ProductDetail';
 import HooksExample from './Hooks/HooksExample';
 import ReactBoostrap from './ReactBootstrap/ReactBootstrap';
+import { removeProduct, addProduct, loadProducts } from './redux/actions';
 
 export default class Main extends React.Component { // exporting component
     constructor(props) {
@@ -79,6 +80,18 @@ export default class Main extends React.Component { // exporting component
 
     componentDidMount() { // call after render, this is the best place where we can call API
         console.log('ComponentDidMount 3');
+        this.props.dispatch(removeProduct(1));
+        this.props.dispatch(addProduct({
+            "productId": 6,
+            "productName": "Iphone",
+            "productCode": "101",
+            "releaseDate": "October 15, 2025",
+            "description": "Excellent phone",
+            "price": 80000,
+            "starRating": 5,
+            "imageUrl": "https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+        }));
+        this.props.dispatch(loadProducts());
     }
 
     updateUsername = () => {

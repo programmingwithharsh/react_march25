@@ -1,20 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'font-awesome/css/font-awesome.css';
+import App from './App';
+import { legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+import ProductReducer from './redux/reducers';
 
-const username = "Ayush"; // string
-const interests = ["Playing video games", "Cricket", "Riding Bike", "Travelling"]; // array
-const birth = { // object
-    year: 2000,
-    place: "Madhya Pradesh"
-};
+const store = createStore(ProductReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // creating store
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<Main mobile="iPhone" user={username} hobbies={interests} birthDetail={birth} />); // render method
-/*
-Props mobile, user, hobbies and birthDetail
-*/
+root.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+);
