@@ -1,10 +1,14 @@
 import React from 'react';
+import AddProduct from './AddProduct';
 
 class Welcome extends React.Component {
 
     constructor(props) { // lifecycle
         super(props);
-        console.log("Welcome Component Props is ", this.props);
+        this.state = {
+            username: "Debasis",
+            address: "Mumbai"
+        }
         console.log("Welcome - constructor 1");
     }
 
@@ -39,7 +43,7 @@ class Welcome extends React.Component {
         localStorage.setItem("user", JSON.stringify(user)); // storing object inside localstorage
         localStorage.setItem("users", JSON.stringify(users)); // storing array of object inside localstorage
 
-
+        /*
         console.log(typeof localStorage.getItem("username"));
         console.log(typeof localStorage.getItem("active"));
         console.log(typeof localStorage.getItem("x"));
@@ -51,11 +55,40 @@ class Welcome extends React.Component {
         console.log(localStorage.getItem("x"));
         console.log(JSON.parse(localStorage.getItem("user")));
         console.log(JSON.parse(localStorage.getItem("users")));
+        */
+    }
+
+    updateUsername = () => {
+        this.setState({ // updating state, whenever state updates component rerender
+            username: "Ganesh",
+            address: "Delhi"
+        })
+    }
+
+    /*
+    shouldComponentUpdate() {
+        return true; // by default it's true
+    }
+    */
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        document.getElementById("div1").innerHTML = "Before upate username is " + prevState.username
+        return true;
+    }
+
+    componentDidUpdate() {
+        document.getElementById("div2").innerHTML = "After upate username is " + this.state.username
     }
 
     render() { // render lifecycle
         console.log("Welcome - render 2");
+        console.log(this.state);
         return (<div className='m-4'>
+            <div id="div1"></div>
+            <div id="div2"></div>
+            <h1>State is having username is {this.state.username}</h1>
+            <button className='btn btn-primary m-2' style={{ backgroundColor: 'aqua', color: 'black' }} onClick={this.updateUsername}>Update Username</button>
+            <AddProduct address='Hyderabad' />
             <h1>Welcome to Users Module</h1>
             <p>Existing Users</p>
             <button className='btn btn-primary'>Login</button>

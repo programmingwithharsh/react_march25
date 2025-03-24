@@ -6,7 +6,19 @@ class AddProduct extends React.Component {
     constructor() {
         super();
         this.state = {
-            redirect: false
+            redirect: false,
+            address: 'Mumbai'
+        }
+        console.log("AddProduct constructor");
+    }
+
+    componentWillUnmount() {
+        console.log("AddProduct componentWillUnmount");
+    }
+
+    static getDerivedStateFromProps(props, state) { // update state "Mumbai" from props "Hyderabad"
+        return {
+            address: props.address
         }
     }
 
@@ -37,6 +49,8 @@ class AddProduct extends React.Component {
             })
         }
 
+        this.props.onAddProduct(product); // calling Main addProduct function
+
         let products = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
         products.push(product);
 
@@ -62,6 +76,7 @@ class AddProduct extends React.Component {
                     <Navigate to="/products" />
                 )
             }
+            <div className="fw-bold">Address state is {this.state.address}</div>
             <form onSubmit={this.handleSubmit}>
 
                 Product Name <input className='form-control' type='text' placeholder='Enter Product name' name="productName" />

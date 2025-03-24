@@ -26,7 +26,7 @@ export default class Main extends React.Component { // exporting component
             products: [
                 {
                     "productId": 1,
-                    "productName": "Leaf Rake",
+                    "productName": "Leaf Rake - 1",
                     "productCode": "GDN-0011",
                     "releaseDate": "March 19, 2016",
                     "description": "Leaf rake with 48-inch wooden handle.",
@@ -94,6 +94,12 @@ export default class Main extends React.Component { // exporting component
         this.props.dispatch(loadProducts());
     }
 
+    addProduct = (productSubmitted) => { // udpating state
+        this.setState((state) => ({
+            products: state.products.concat([productSubmitted])
+        }))
+    }
+
     updateUsername = () => {
         this.setState({ // updating state, whenever state updates component rerender
             username: "Ganesh",
@@ -112,7 +118,7 @@ export default class Main extends React.Component { // exporting component
                     <Route index element={<Welcome mobile="iPhone" user={this.props.user} hobbies={this.props.hobbies} place={this.props.birthDetail} />} />
                     <Route path="/login" element={<Login mobile="Samsung" />} />
                     <Route path="/title" element={<Title title="This is title props" />} />
-                    <Route path="/addproduct" element={<AddProduct {...this.props} />} />
+                    <Route path="/addproduct" element={<AddProduct {...this.props} onAddProduct={(addedProduct) => this.addProduct(addedProduct)} />} />
                     <Route path="/products" element={<ProductList products={this.state.products} mobile="iPhone" />} />
                     <Route path="/products/:id" element={<ProductDetail />} />
                     <Route path="/users" element={<UserList />} />

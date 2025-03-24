@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'; // Functioan component Hooks
+import axios from 'axios';
 
 const UseEffectHookExample = () => {
     const [data, setData] = useState([{ name: "Debasis" }]); // default value inside useState
@@ -12,16 +13,35 @@ const UseEffectHookExample = () => {
             data 
             setData 
     */
-
     let url1 = 'https://jsonplaceholder.typicode.com/users';
+
+    useEffect(() => {
+        // Make a request for a user with a given ID
+        axios.get(url1)
+            .then(function (response) {
+                // handle success
+                console.log("axios", response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+
+    }, []); // effect will run once 
+
     useEffect(() => {
         fetch(url1,
             {
                 method: "GET"
             })
             .then((response) => response.json())
-            .then((responseData) =>
+            .then((responseData) => {
+                console.log("fetch", responseData);
                 setData(responseData)
+            }
             )
     }, []); // effect will run once 
 
